@@ -39,6 +39,7 @@
                 <i class="bi bi-sun-fill" id="lightModeBtn"></i>
                 <i class="bi bi-moon-fill hide" id="darkModeBtn"></i>
             </div>
+            
         </header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -53,13 +54,13 @@
                     <ul class="navbar-nav" id="baseMenu">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('')">kezdőlap</a>
+                            <a class="nav-link" href="#" onclick="navigate('/users/home')">kezdőlap</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('users/login')">Login</a>
+                            <a class="nav-link" href="#" onclick="navigate('/users/login')">belépés</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('users/register')">Registration</a>
+                            <a class="nav-link" href="#" onclick="navigate('/users/register')">Regisztráció</a>
                         </li>
 
                     </ul>
@@ -68,13 +69,13 @@
                     <ul class="navbar-nav" id="userMenu">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('users/steps')">My steps</a>
+                            <a class="nav-link" href="#" onclick="navigate('/users/forecast')">Időjárás előrejelzés</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('users/profile')">My profile</a>
+                            <a class="nav-link" href="#" onclick="navigate('/users/profile')">Profil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                            <a class="nav-link" href="#" onclick="logout()">Kijelentkezés</a>
                         </li>
 
                     </ul>
@@ -86,10 +87,10 @@
                             <a class="nav-link" href="#" onclick="navigate('admin/dashboard')">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="navigate('admin/users')">Manage users</a>
+                            <a class="nav-link" href="#" onclick="navigate('admin/users')">Felhasználók kezelése</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                            <a class="nav-link" href="#" onclick="logout()">Kijelentkezés</a>
                         </li>
                     </ul>
 
