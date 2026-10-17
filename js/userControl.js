@@ -11,7 +11,7 @@ async function updatePasswd(){
 
     let uid = loadUser() ? loadUser().ID : 0;
 
-    const response = await fetch(`http://localhost:3333/users/${uid}/passmod`, {
+    const response = await fetch(`http://localhost:3000/users/${uid}/passmod`, {
         method: 'POST',
         headers: {
             "Content-Type" : "Application/json"
@@ -30,39 +30,125 @@ async function updatePasswd(){
         confirm.value = '';
     }
 
-}
 
+}
+async function registration(){
+  
+    let name = document.querySelector('#name').value;
+    let email = document.querySelector('#email').value;
+    let passwd = document.querySelector('#passwd').value;
+    let confirm = document.querySelector('#confirm').value;
+
+    // meg kell szólítani a servert
+
+    let user = {
+        name,   
+        email, 
+        passwd, 
+        confirm
+    }
+
+    const response = await fetch(`http://localhost:3000/users/register`, {
+        method: 'POST',
+        headers: {
+            "Content-Type" : "Application/json"
+        },
+        body: JSON.stringify(user)
+    });
+
+    let res = await response.json();
+
+    if (response.status != 201){
+        showMessage('danger', 'ERROR', res.error);
+    } else {
+        showMessage('success', 'OK', res.message);
+        navigate('users/login');
+    }
+}
 function loadUser() {
-    let user = sessionStorage.getItem('SCU');
-
-    if (!user || user === 'undefined') {
-        return null;
+    const userStr = sessionStorage.getItem('SCU');
+    
+    // Ha üres, vagy véletlenül az "undefined" szöveg ragadt be:
+    if (!userStr || userStr === "undefined") {
+        return null; 
     }
-
+    
     try {
-        return JSON.parse(user);
-    } catch (error) {
-        console.error('Hibás felhasználói adat:', error);
+        return JSON.parse(userStr);
+    } catch (e) {
+        console.error("Hibás JSON a tárolóban:", e);
         return null;
     }
 }
+function logout(){
+    clearUser();
+    loginCheck();
+   
+}
+function clearUser(){
+    sessionStorage.removeItem('SCU');
+}
 
+
+// async function updateProfile(){
+//     let name = document.querySelector('#name');
+//     let email = document.querySelector('#email');
+
+//     let loggedUser = loadUser();
+
+//     let data = {
+//         username: name.value,
+//         email: email.value,
+//         luid: loggedUser.ID
+//     }
+
+//     const response = await fetch(`http://localhost:3000/users/${loggedUser.ID}`, {
+//         method: 'PATCH',
+//         headers: {
+//             "Content-Type" : "Application/json"
+//         },
+//         body: JSON.stringify(data)
+//     });
+
+//     let res = await response.json();
+
+//     if (response.status != 200){
+//         showMessage('danger', 'ERROR', res.error);
+//     } else {
+//         showMessage('success', 'OK', res.message);
+//         let user = {
+//             ID: loggedUser.ID,
+//             name: name.value,
+//             email: email.value,
+//             role: loggedUser.role
+//         }
+//         storeUser(user);
+//     }
+
+// }
 async function updateProfile(){
     let name = document.querySelector('#name');
     let email = document.querySelector('#email');
 
     let loggedUser = loadUser();
 
+    if (!loggedUser) {
+        showMessage('danger', 'ERROR', 'Nem vagy bejelentkezve!');
+        return; 
+    }
+
+    // Biztosítsuk, hogy az ID-k azonos típusúak (számok vagy stringek) legyenek
     let data = {
         username: name.value,
         email: email.value,
-        luid: loggedUser.ID
+        luid: Number(loggedUser.ID) // Számmá alakítjuk
     }
 
-    const response = await fetch(`http://localhost:3333/users/${loggedUser.ID}`, {
+    const response = await fetch(`http://localhost:3000/users/${loggedUser.ID}`, {
         method: 'PATCH',
         headers: {
-            "Content-Type" : "Application/json"
+            // Kisbetűs "application/json" a szabvány szerint
+            "Content-Type" : "application/json" 
         },
         body: JSON.stringify(data)
     });
@@ -70,7 +156,8 @@ async function updateProfile(){
     let res = await response.json();
 
     if (response.status != 200){
-        showMessage('danger', 'ERROR', res.error);
+        // JAVÍTVA: res.error helyett res.message, mert a backend ezt küldi!
+        showMessage('danger', 'ERROR', res.message || 'Hiba történt!');
     } else {
         showMessage('success', 'OK', res.message);
         let user = {
@@ -81,33 +168,11 @@ async function updateProfile(){
         }
         storeUser(user);
     }
-
 }
 
-function loadUser() {
-    let user = sessionStorage.getItem('SCU');
-
-    if (!user || user === 'undefined') {
-        return null;
-    }
-
-    try {
-        return JSON.parse(user);
-    } catch (error) {
-        console.error('Hibás felhasználói adat:', error);
-        return null;
-    }
-}
-
-function storeUser(user) {
-    if (!user) {
-        console.error('Nincs elmenthető felhasználó!');
-        return;
-    }
-
+function storeUser(user){
     sessionStorage.setItem('SCU', JSON.stringify(user));
 }
-
 function loginCheck() {
     const user = loadUser();
 
@@ -117,7 +182,7 @@ function loginCheck() {
             navigate('admin/dashboard');
         } else {
             setMenuItems('user');
-            navigate('users/steps');
+            navigate('users/forecast'); // IDE a valódi időjárásoldalad útvonala kell
         }
     } else {
         setMenuItems('');
@@ -125,58 +190,42 @@ function loginCheck() {
     }
 }
 
-async function updateProfile() {
-    const name = document.querySelector('#name');
-    const email = document.querySelector('#email');
+async function login () {
+    let email = document.querySelector('#email').value;
+    let password = document.querySelector('#passwd').value;
 
-    const loggedUser = loadUser();
+    let user = {
+        email, 
+        password
+    } 
 
-    if (!loggedUser) {
-        alert('Nincs bejelentkezett felhasználó!');
-        return;
-    }
+    const response = await fetch(`http://localhost:3000/users/login`, {
+        method: 'POST',
+        headers: {
+            "Content-Type" : "Application/json"
+        },
+        body: JSON.stringify(user)
+    });
 
-    const data = {
-        username: name.value,
-        email: email.value,
-        luid: loggedUser.ID
-    };
+    let res = await response.json();
 
-    try {
-        const response = await fetch(
-            `http://localhost:3333/users/${loggedUser.ID}`,
-            {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            }
-        );
-
-        const res = await response.json();
-
-        if (!response.ok) {
-            alert(res.error || 'Hiba történt a profil frissítésekor!');
-            return;
-        }
-
-        alert(res.message || 'Profil sikeresen frissítve!');
-
-        const user = {
-            ...loggedUser,
-            ID: loggedUser.ID,
-            name: name.value,
-            email: email.value
-        };
-
-        storeUser(user);
-
-    } catch (error) {
-        console.error('Szerverhiba:', error);
-        alert('Nem sikerült kapcsolódni a szerverhez!');
+    if (response.status != 200){
+        // Javítva res.message-re, mert a backend valószínűleg ezt küldi
+        showMessage('danger', 'ERROR', res.message || res.error); 
+    } else {
+        showMessage('success', 'OK', res.message);
+        
+        // Ellenőrizzük, hogy milyen néven jött a user a backendről, és azt mentjük el:
+        const userToSave = res.loggedUser || res.user || res.data || res;
+        
+        console.log("Mentésre kerülő felhasználó:", userToSave);
+        storeUser(userToSave);
+        
+        // Bejelentkezés után frissíteni kell a menüt és átirányítani a júzert!
+        loginCheck(); 
     }
 }
+
 function setMenuItems(param){
     
     let baseMenu = document.querySelector('#baseMenu');

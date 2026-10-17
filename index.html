@@ -32,15 +32,25 @@
 <body data-bs-theme="">
 
     <div class="container">
-        <header>
-            <h1>Égbolt <i class="bi bi-cloud-drizzle-fill"></i></h1>
-            <h3>Tudd meg az időjárást! Most!</h3>
-            <div class="themeSwitch">
-                <i class="bi bi-sun-fill" id="lightModeBtn"></i>
-                <i class="bi bi-moon-fill hide" id="darkModeBtn"></i>
-            </div>
-            
-        </header>
+        <header class="navbar navbar-expand-lg d-flex justify-content-between align-items-center px-4 py-3 mb-4 rounded-4 shadow glass-card text-white">
+    <div class="d-flex align-items-center gap-3">
+        <!-- Modernizált logó és ikon -->
+        <div class="bg-primary bg-opacity-25 p-2 rounded-3 text-info fs-3 d-flex align-items-center justify-content-center">
+            <i class="bi bi-cloud-drizzle-fill animate-bounce"></i>
+        </div>
+        <div>
+            <h1 class="h3 fw-bold mb-0 text-gradient">Égbolt</h1>
+            <p class="small text-white-50 mb-0 d-none d-sm-block">Tudd meg az időjárást! Most!</p>
+        </div>
+    </div>
+    
+    <!-- Téma váltó gombok -->
+    <div class="themeSwitch bg-white bg-opacity-10 p-2 rounded-pill d-flex align-items-center cursor-pointer shadow-sm" style="cursor: pointer;">
+        <i class="bi bi-sun-fill fs-4 px-2 text-warning" id="lightModeBtn" title="Világos mód"></i>
+        <i class="bi bi-moon-fill fs-4 px-2 text-muted hide" id="darkModeBtn" title="Sötét mód"></i>
+    </div>
+</header>
+
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Navbar</a>
@@ -108,7 +118,7 @@
 
     <!-- controllers -->
      <script src="/controll/messagectrl.js"></script>
-     <script src="/controll/login.js"></script>
+     
      <script src="/js/userControl.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/admin.js"></script>

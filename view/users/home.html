@@ -1,1 +1,173 @@
 <h3>Kezdőlap</h3>
+<div class="container py-4">
+    <!-- Felső kereső és üdvözlő sáv -->
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-6 text-white mb-3 mb-md-0">
+            <h2 class="fw-bold mb-0">Üdvözlünk az Időjárás Központban!</h2>
+            <p class="text-white-50 mb-0">Nézd meg a legfrissebb előrejelzéseket.</p>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group shadow-sm">
+                <input type="text" class="form-control border-0 bg-white bg-opacity-75" placeholder="Keress várost...">
+                <button class="btn btn-primary" type="button">Keresés</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- MAI KIEMELT IDŐJÁRÁS KÁRTYA -->
+        <div class="col-lg-5">
+            <div class="card weather-card-main text-white h-100 border-0 shadow">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="fw-bold mb-0">Budapest</h3>
+                                <p class="opacity-75 mb-0">Ma, Október 17.</p>
+                            </div>
+                            <span class="badge bg-white bg-opacity-25 text-white p-2 px-3 rounded-pill">Élő adatok</span>
+                        </div>
+                        
+                        <div class="my-5 d-flex align-items-center justify-content-between">
+                            <h1 class="display-1 fw-bold mb-0">14°C</h1>
+                            <div class="text-end">
+                                <i class="bi bi-cloud-sun display-2 text-warning animate-bounce"></i>
+                                <div class="fw-medium mt-2 fs-5">Részben felhős</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gyors infók a mai napról -->
+                    <div class="row g-3 pt-3 border-top border-white border-opacity-25 text-center">
+                        <div class="col-4">
+                            <div class="text-white-50 small mb-1"><i class="bi bi-wind me-1"></i> Szél</div>
+                            <div class="fw-bold">18 km/h</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-white-50 small mb-1"><i class="bi bi-droplet me-1"></i> Páratartalom</div>
+                            <div class="fw-bold">64%</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-white-50 small mb-1"><i class="bi bi-sun me-1"></i> UV Index</div>
+                            <div class="fw-bold">2 / 10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RÉSZLETES METRIKÁK ÉS INFÓK -->
+        <div class="col-lg-7">
+            <div class="card glass-card h-100 border-0 shadow text-white">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4">Részletes mai adatok</h5>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
+                                <div class="bg-primary bg-opacity-25 p-3 rounded-3 me-3 text-primary-light">
+                                    <i class="bi bi-thermometer-half fs-3"></i>
+                                </div>
+                                <div>
+                                    <span class="text-white-50 small d-block">Hőérzet</span>
+                                    <span class="fs-5 fw-bold">13°C</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
+                                <div class="bg-info bg-opacity-25 p-3 rounded-3 me-3 text-info">
+                                    <i class="bi bi-compass fs-3"></i>
+                                </div>
+                                <div>
+                                    <span class="text-white-50 small d-block">Légnyomás</span>
+                                    <span class="fs-5 fw-bold">1018 hPa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
+                                <div class="bg-warning bg-opacity-25 p-3 rounded-3 me-3 text-warning">
+                                    <i class="bi bi-eye fs-3"></i>
+                                </div>
+                                <div>
+                                    <span class="text-white-50 small d-block">Látástávolság</span>
+                                    <span class="fs-5 fw-bold">10 km</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
+                                <div class="bg-danger bg-opacity-25 p-3 rounded-3 me-3 text-danger">
+                                    <i class="bi bi-cloud-rain fs-3"></i>
+                                </div>
+                                <div>
+                                    <span class="text-white-50 small d-block">Csapadék esély</span>
+                                    <span class="fs-5 fw-bold">12%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kis figyelmeztető banner -->
+                    <div class="alert alert-info border-0 bg-info bg-opacity-25 text-white mt-4 mb-0 d-flex align-items-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-3 fs-4 text-info"></i>
+                        <div>
+                            <strong>Nincs érvényben riasztás!</strong> Kellemes őszi idő várható a mai nap folyamán.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 NAPOS ELŐREJELZÉS -->
+        <div class="col-12">
+            <h4 class="text-white fw-bold mb-3 mt-2">Következő napok előrejelzése</h4>
+            <div class="row g-3">
+                <!-- 1. Nap -->
+                <div class="col-6 col-md-3">
+                    <div class="card glass-card border-0 shadow text-center text-white py-3">
+                        <div class="card-body">
+                            <span class="text-white-50 d-block small mb-2">Vasárnap</span>
+                            <i class="bi bi-sun display-6 text-warning my-2 d-block"></i>
+                            <span class="d-block fw-bold fs-5 mt-2">16°C</span>
+                            <span class="text-white-50 small">7°C</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 2. Nap -->
+                <div class="col-6 col-md-3">
+                    <div class="card glass-card border-0 shadow text-center text-white py-3">
+                        <div class="card-body">
+                            <span class="text-white-50 d-block small mb-2">Hétfő</span>
+                            <i class="bi bi-cloud-lightning-rain display-6 text-info my-2 d-block"></i>
+                            <span class="d-block fw-bold fs-5 mt-2">12°C</span>
+                            <span class="text-white-50 small">9°C</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 3. Nap -->
+                <div class="col-6 col-md-3">
+                    <div class="card glass-card border-0 shadow text-center text-white py-3">
+                        <div class="card-body">
+                            <span class="text-white-50 d-block small mb-2">Kedd</span>
+                            <i class="bi bi-cloud-drizzle display-6 text-light my-2 d-block"></i>
+                            <span class="d-block fw-bold fs-5 mt-2">13°C</span>
+                            <span class="text-white-50 small">6°C</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 4. Nap -->
+                <div class="col-6 col-md-3">
+                    <div class="card glass-card border-0 shadow text-center text-white py-3">
+                        <div class="card-body">
+                            <span class="text-white-50 d-block small mb-2">Szerda</span>
+                            <i class="bi bi-cloud-sun display-6 text-warning my-2 d-block"></i>
+                            <span class="d-block fw-bold fs-5 mt-2">15°C</span>
+                            <span class="text-white-50 small">5°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

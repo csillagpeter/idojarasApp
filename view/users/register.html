@@ -1,1 +1,32 @@
-<h3>Regisztráció</h3>
+<div class="col-lg-6 offset-lg-3">
+
+    <h3>Registration</h3>
+    <hr>
+
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="name" placeholder="">
+        <label for="name">Username</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" placeholder="">
+        <label for="email">E-mail address</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="passwd" placeholder="">
+        <label for="passwd">Password</label>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="confirm" placeholder="">
+        <label for="confirm">Confirm password</label>
+    </div>
+
+    <button type="button" class="btn btn-primary mb-3" onclick="registration();">
+        <i class="bi bi-person-fill-add"></i>&nbsp;&nbsp;Registration
+    </button>   
+    
+    <p>You are already registered? Please <strong><a href="#" onclick="navigate('users/login')">Sign in!</a></strong></p>
+
+</div>

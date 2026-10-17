@@ -50,3 +50,112 @@ p{
     
     
 }
+/* Globális sötét/modern időjárás háttér az egész oldalra */
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/* Glassmorphism kártyák effekttel */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* A nagy mai időjárás kártya kiemelése egy külön színátmenettel */
+.weather-card-main {
+    background: linear-gradient(135deg, #ff9900 0%, #ff5e62 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Kis ikon animáció, hogy még élőbb legyen */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.animate-bounce {
+    animation: bounce 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* Keresőmező finomhangolása */
+.input-group .form-control:focus {
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Segédszín a világosabb ikonokhoz */
+.text-primary-light {
+    color: #8bb4fa !important;
+}
+/* Alapértelmezett beállítás: SÖTÉTKÉK / SÖTÉT MÓD */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.15);
+}
+
+/* VILÁGOS MÓD BEÁLLÍTÁSAI (Ha a body megkapja a .light-mode osztályt) */
+body.light-mode {
+    --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    --text-color: #212529;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --card-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Globális stílusok a változók használatával */
+body {
+    background: var(--bg-gradient) !important;
+    background-attachment: fixed;
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    transition: background 0.4s ease, color 0.4s ease; /* Finom átmenet váltáskor */
+}
+
+/* Minden fehér szöveges elemet dinamikussá teszünk világos módban */
+body.light-mode .text-white, 
+body.light-mode .glass-card,
+body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5 {
+    color: #212529 !important;
+}
+body.light-mode .text-white-50 {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Dinamikus Glassmorphism kártyák */
+.glass-card {
+    background: var(--card-bg) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border) !important;
+}
+
+/* Színátmenetes logó felirat */
+.text-gradient {
+    background: linear-gradient(45deg, #00d2ff, #3a7bd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+body.light-mode .text-gradient {
+    background: linear-gradient(45deg, #1e3c72, #2a5298);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Elrejtés segédosztály */
+.hide {
+    display: none !important;
+}
