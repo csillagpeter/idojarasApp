@@ -6,12 +6,7 @@
             <h2 class="fw-bold mb-0">Üdvözlünk az Időjárás Központban!</h2>
             <p class="text-white-50 mb-0">Nézd meg a legfrissebb előrejelzéseket.</p>
         </div>
-        <div class="col-md-6">
-            <div class="input-group shadow-sm">
-                <input type="text" class="form-control border-0 bg-white bg-opacity-75" placeholder="Keress várost...">
-                <button class="btn btn-primary" type="button">Keresés</button>
-            </div>
-        </div>
+        
     </div>
 
     <div class="row g-4">
@@ -56,71 +51,10 @@
             </div>
         </div>
 
-        <!-- RÉSZLETES METRIKÁK ÉS INFÓK -->
-        <div class="col-lg-7">
-            <div class="card glass-card h-100 border-0 shadow text-white">
-                <div class="card-body p-4">
-                    <h5 class="fw-bold mb-4">Részletes mai adatok</h5>
-                    <div class="row g-3">
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-25 p-3 rounded-3 me-3 text-primary-light">
-                                    <i class="bi bi-thermometer-half fs-3"></i>
-                                </div>
-                                <div>
-                                    <span class="text-white-50 small d-block">Hőérzet</span>
-                                    <span class="fs-5 fw-bold">13°C</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
-                                <div class="bg-info bg-opacity-25 p-3 rounded-3 me-3 text-info">
-                                    <i class="bi bi-compass fs-3"></i>
-                                </div>
-                                <div>
-                                    <span class="text-white-50 small d-block">Légnyomás</span>
-                                    <span class="fs-5 fw-bold">1018 hPa</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
-                                <div class="bg-warning bg-opacity-25 p-3 rounded-3 me-3 text-warning">
-                                    <i class="bi bi-eye fs-3"></i>
-                                </div>
-                                <div>
-                                    <span class="text-white-50 small d-block">Látástávolság</span>
-                                    <span class="fs-5 fw-bold">10 km</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 bg-white bg-opacity-10 rounded-3 d-flex align-items-center">
-                                <div class="bg-danger bg-opacity-25 p-3 rounded-3 me-3 text-danger">
-                                    <i class="bi bi-cloud-rain fs-3"></i>
-                                </div>
-                                <div>
-                                    <span class="text-white-50 small d-block">Csapadék esély</span>
-                                    <span class="fs-5 fw-bold">12%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        
+      
 
-                    <!-- Kis figyelmeztető banner -->
-                    <div class="alert alert-info border-0 bg-info bg-opacity-25 text-white mt-4 mb-0 d-flex align-items-center" role="alert">
-                        <i class="bi bi-info-circle-fill me-3 fs-4 text-info"></i>
-                        <div>
-                            <strong>Nincs érvényben riasztás!</strong> Kellemes őszi idő várható a mai nap folyamán.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- 4 NAPOS ELŐREJELZÉS -->
-        <div class="col-12">
             <h4 class="text-white fw-bold mb-3 mt-2">Következő napok előrejelzése</h4>
             <div class="row g-3">
                 <!-- 1. Nap -->
@@ -168,6 +102,7 @@
                     </div>
                 </div>
             </div>
+            <p>Részletes adatokért jelentkez be !<strong><a href="#" onclick="navigate('users/login')">Sign in!</a></strong></p>
         </div>
     </div>
 </div>

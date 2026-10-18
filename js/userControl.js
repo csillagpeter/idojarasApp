@@ -137,17 +137,17 @@ async function updateProfile(){
         return; 
     }
 
-    // Biztosítsuk, hogy az ID-k azonos típusúak (számok vagy stringek) legyenek
+    
     let data = {
         username: name.value,
         email: email.value,
-        luid: Number(loggedUser.ID) // Számmá alakítjuk
+        luid: Number(loggedUser.ID)
     }
 
     const response = await fetch(`http://localhost:3000/users/${loggedUser.ID}`, {
         method: 'PATCH',
         headers: {
-            // Kisbetűs "application/json" a szabvány szerint
+            
             "Content-Type" : "application/json" 
         },
         body: JSON.stringify(data)
@@ -156,7 +156,7 @@ async function updateProfile(){
     let res = await response.json();
 
     if (response.status != 200){
-        // JAVÍTVA: res.error helyett res.message, mert a backend ezt küldi!
+       
         showMessage('danger', 'ERROR', res.message || 'Hiba történt!');
     } else {
         showMessage('success', 'OK', res.message);
@@ -179,10 +179,10 @@ function loginCheck() {
     if (user) {
         if (user.role === 'admin') {
             setMenuItems('admin');
-            navigate('admin/dashboard');
+            navigate('admin/users');
         } else {
             setMenuItems('user');
-            navigate('users/forecast'); // IDE a valódi időjárásoldalad útvonala kell
+            navigate('users/forecast'); 
         }
     } else {
         setMenuItems('');
@@ -210,18 +210,18 @@ async function login () {
     let res = await response.json();
 
     if (response.status != 200){
-        // Javítva res.message-re, mert a backend valószínűleg ezt küldi
+        
         showMessage('danger', 'ERROR', res.message || res.error); 
     } else {
         showMessage('success', 'OK', res.message);
         
-        // Ellenőrizzük, hogy milyen néven jött a user a backendről, és azt mentjük el:
-        const userToSave = res.loggedUser || res.user || res.data || res;
+        
+        const userToSave = res.loggedUser || res.user || res.data || res.role || res;
         
         console.log("Mentésre kerülő felhasználó:", userToSave);
         storeUser(userToSave);
         
-        // Bejelentkezés után frissíteni kell a menüt és átirányítani a júzert!
+       
         loginCheck(); 
     }
 }
